@@ -17,7 +17,10 @@
             <p class="subtitle">A world of adventure awaits.</p>
 
             <nav class="menu-buttons" aria-label="Main menu">
-                <button type="button" onclick="alert('New Game is coming soon!')">
+                <button
+                    type="button"
+                    onclick="window.location.href='<?= site_url('game/create') ?>'"
+                >
                     New Game
                 </button>
 

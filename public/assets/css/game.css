@@ -114,3 +114,181 @@ body {
     letter-spacing: 3px;
     color: #c7c7c7;
 }
+
+/* Character creation screen */
+.creation-panel {
+    width: 100%;
+    max-width: 620px;
+    padding: 36px;
+    background: rgba(12, 12, 12, 0.78);
+    border: 1px solid rgba(201, 171, 111, 0.75);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+}
+
+.creation-title {
+    margin: 0;
+    font-size: clamp(32px, 6vw, 48px);
+    text-align: center;
+    text-shadow: 0 3px 10px #000;
+}
+
+.creation-subtitle {
+    margin: 12px 0 28px;
+    color: #dedede;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 28px;
+}
+
+.form-group label,
+.class-selection legend {
+    display: block;
+    margin-bottom: 12px;
+    color: #e4cd9b;
+    font-size: 17px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 13px 14px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid #887650;
+    font-size: 16px;
+}
+
+.form-group input:focus {
+    outline: 2px solid #d8b978;
+    outline-offset: 2px;
+}
+
+.class-selection {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    padding: 0;
+    border: 0;
+}
+
+.class-selection legend {
+    margin-bottom: 14px;
+}
+
+.class-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 12px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid #6c6048;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.class-option:has(input:checked) {
+    background: rgba(130, 98, 43, 0.4);
+    border-color: #f0d39a;
+}
+
+.class-option input {
+    accent-color: #d8b978;
+}
+
+.class-icon {
+    font-size: 30px;
+    color: #e4cd9b;
+}
+
+.class-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.class-description {
+    color: #d0d0d0;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.creation-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.primary-button,
+.secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 12px 20px;
+    font-family: inherit;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.primary-button {
+    color: #fff;
+    background: #795b2e;
+    border: 1px solid #e0c38a;
+}
+
+.secondary-button {
+    color: #fff;
+    background: transparent;
+    border: 1px solid #999;
+}
+
+.primary-button:hover {
+    background: #96733b;
+}
+
+.secondary-button:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.form-error {
+    padding: 10px;
+    color: #ffd6d6;
+    background: rgba(120, 0, 0, 0.4);
+    border: 1px solid #a44;
+}
+
+/* Stack class choices on smaller screens */
+@media (max-width: 520px) {
+    .creation-panel {
+        padding: 24px 18px;
+    }
+
+    .class-selection {
+        grid-template-columns: 1fr;
+    }
+
+    .class-option {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        text-align: left;
+    }
+
+    .class-option input {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .class-icon {
+        grid-column: 1;
+        grid-row: 2 / span 2;
+    }
+
+    .class-name,
+    .class-description {
+        grid-column: 2;
+    }
+}
