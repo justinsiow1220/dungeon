@@ -1,0 +1,116 @@
+
+/* Basic page setup */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #ffffff;
+}
+
+/* Full-screen background */
+.home-screen {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.10),
+            rgba(0, 0, 0, 0.25)
+        ),
+        url("../media/screen/background-image.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 20px;
+}
+
+/* Main menu content */
+.menu {
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+}
+
+.welcome-text {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 5px;
+    margin-bottom: 22px;
+    color: #d6c39b;
+}
+
+.game-title {
+    font-size: clamp(42px, 8vw, 76px);
+    line-height: 1.1;
+    margin: 0;
+    text-transform: uppercase;
+    text-shadow: 0 4px 18px #000000;
+}
+
+.subtitle {
+    font-size: 17px;
+    color: #dedede;
+    margin: 22px 0 38px;
+}
+
+/* Main menu buttons */
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.menu-buttons button {
+    width: 100%;
+    padding: 15px 20px;
+    cursor: pointer;
+
+    font-family: inherit;
+    font-size: 18px;
+    letter-spacing: 1px;
+
+    color: #ffffff;
+    background: rgba(15, 15, 15, 0.78);
+    border: 1px solid #a99569;
+
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.menu-buttons button:hover {
+    background: rgba(126, 92, 39, 0.9);
+    border-color: #f0d9a0;
+    transform: scale(1.03);
+}
+
+.menu-buttons button:focus-visible {
+    outline: 2px solid #f0d9a0;
+    outline-offset: 4px;
+}
+
+.footer-text {
+    margin-top: 36px;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: #c7c7c7;
+}
