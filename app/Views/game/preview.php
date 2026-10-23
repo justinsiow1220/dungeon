@@ -22,18 +22,22 @@
 
             <p>Your adventure is ready to begin.</p>
 
-            <div class="creation-actions">
+            <div class="creation-actions preview-actions">
                 <a href="<?= site_url('game/create') ?>" class="secondary-button">
                     Back
                 </a>
 
-                <a href="<?= site_url('game') ?>" class="primary-button">
+                <a href="<?= site_url('game/battle') ?>" class="primary-button">
+                    Begin Adventure
+                </a>
+            
+                <a href="<?= site_url('game') ?>" class="secondary-button">
                     Main Menu
                 </a>
             </div>
 
             <p class="class-description">
-                This is a preview. Your character has not been saved yet.
+                Your character has been saved.
             </p>
         </section>
     </main>

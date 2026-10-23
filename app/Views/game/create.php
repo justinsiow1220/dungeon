@@ -47,6 +47,7 @@
                             value="Warrior"
                             required
                         >
+                        <img class="class-portrait" src="<?= esc(hero_image_url('Warrior'), 'attr') ?>" alt="">
                         <span class="class-icon">⚔</span>
                         <span class="class-name">Warrior</span>
                         <span class="class-description">
@@ -60,6 +61,7 @@
                             name="character_class"
                             value="Mage"
                         >
+                        <img class="class-portrait" src="<?= esc(hero_image_url('Mage'), 'attr') ?>" alt="">
                         <span class="class-icon">✦</span>
                         <span class="class-name">Mage</span>
                         <span class="class-description">
@@ -73,6 +75,7 @@
                             name="character_class"
                             value="Rogue"
                         >
+                        <img class="class-portrait" src="<?= esc(hero_image_url('Rogue'), 'attr') ?>" alt="">
                         <span class="class-icon">🗡</span>
                         <span class="class-name">Rogue</span>
                         <span class="class-description">

@@ -9,26 +9,38 @@ class CreateMonstersTable extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id' => [
+            'monster-id' => [
                 'type'           => 'INT',
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'name' => [
+            'monster-name' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 100,
             ],
-            'hp' => [
+            'monster-hp' => [
                 'type'       => 'INT',
                 'unsigned'   => true,
             ],
-            'attack' => [
+            'monster-atk' => [
+                'type'       => 'INT',
+                'unsigned'   => true,
+            ],
+            'monster-mp' => [
+                'type'       => 'INT',
+                'unsigned'   => true,
+            ],
+            'monster-level' => [
+                'type'       => 'INT',
+                'unsigned'   => true,
+            ],
+            'monster-xp' => [
                 'type'       => 'INT',
                 'unsigned'   => true,
             ],
         ]);
 
-        $this->forge->addKey('id', true);
+        $this->forge->addKey('monster-id', true);
         $this->forge->createTable('monsters');
     }
 

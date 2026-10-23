@@ -10,19 +10,28 @@ class MonsterSeeder extends Seeder
     {
         $monsters = [
             [
-                'name'   => 'Slime',
-                'hp'     => 30,
-                'attack' => 5,
+                'monster-name'   => 'Slime',
+                'monster-hp'     => 30,
+                'monster-atk' => 5,
+                'monster-mp' => 0,
+                'monster-level' => 1,
+                'monster-xp' => 10,
             ],
             [
-                'name'   => 'Skeleton',
-                'hp'     => 50,
-                'attack' => 10,
+                'monster-name'   => 'Skeleton',
+                'monster-hp'     => 50,
+                'monster-atk' => 10,
+                'monster-mp' => 0,
+                'monster-level' => 2,
+                'monster-xp' => 25,
             ],
             [
-                'name'   => 'Goblin',
-                'hp'     => 40,
-                'attack' => 8,
+                'monster-name'   => 'Goblin',
+                'monster-hp'     => 40,
+                'monster-atk' => 8,
+                'monster-mp' => 0,
+                'monster-level' => 1,
+                'monster-xp' => 15,
             ],
         ];
 

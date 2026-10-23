@@ -150,19 +150,41 @@ body {
     font-size: 17px;
 }
 
+
 .form-group input {
     width: 100%;
     padding: 13px 14px;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.55);
+
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.55);
+
     border: 1px solid #887650;
     font-size: 16px;
+    font-family: inherit;
+
+    outline: none;
+    box-shadow: none;
 }
 
-.form-group input:focus {
+/* Keep the same dark background when typing */
+.form-group input:focus,
+.form-group input:active {
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.55);
+    border-color: #d8b978;
     outline: 2px solid #d8b978;
     outline-offset: 2px;
 }
+
+/* Keep typed text white if the browser autofills the field */
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover,
+.form-group input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #ffffff;
+    -webkit-box-shadow: 0 0 0 1000px #242019 inset;
+    box-shadow: 0 0 0 1000px #242019 inset;
+}
+
 
 .class-selection {
     display: grid;
@@ -199,8 +221,14 @@ body {
 }
 
 .class-icon {
-    font-size: 30px;
-    color: #e4cd9b;
+    display: none;
+}
+
+.class-portrait {
+    width: 100%;
+    height: 130px;
+    object-fit: contain;
+    image-rendering: pixelated;
 }
 
 .class-name {
@@ -219,6 +247,25 @@ body {
     justify-content: space-between;
     gap: 14px;
     margin-top: 30px;
+}
+
+/* Keep the main action centered between the two navigation links. */
+.preview-actions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+}
+
+.preview-actions .secondary-button:first-child {
+    justify-self: start;
+}
+
+.preview-actions .primary-button {
+    justify-self: center;
+}
+
+.preview-actions .secondary-button:last-child {
+    justify-self: end;
 }
 
 .primary-button,
@@ -261,8 +308,172 @@ body {
     border: 1px solid #a44;
 }
 
+/* Battle field and combatant status */
+.battle-panel {
+    width: 100%;
+    max-width: 850px;
+    padding: 28px;
+    background: rgba(12, 12, 12, 0.82);
+    border: 1px solid #a99569;
+    text-align: center;
+}
+
+.battle-field {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin: 24px 0;
+}
+
+.combatant-header {
+    min-height: 3.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.combatant-figure {
+    position: relative;
+    height: 220px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border-bottom: 2px solid #a99569;
+    color: #d0d0d0;
+}
+
+.combatant-figure img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.combatant-stats {
+    padding: 12px;
+    text-align: left;
+}
+
+.combatant-stats h2, .combatant-stats p {
+    margin: 6px 0;
+}
+
+.combatant-stats label, .combatant-stats progress {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+}
+
+#hero-hp, #monster-hp { accent-color: #b94d45; }
+#hero-mp { accent-color: #568bd2; }
+.victory-panel, .battle-actions { margin-top: 20px; }
+
+/* Battle action menu */
+.action-menu { max-width: 360px; margin: 0 auto; }
+.action-toggle { list-style: none; }
+.action-toggle::-webkit-details-marker { display: none; }
+.action-toggle:focus-visible, .action-grid button:focus-visible {
+    outline: 2px solid #f0d9a0;
+    outline-offset: 3px;
+}
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+}
+.action-grid form { margin: 0; }
+.action-grid button {
+    width: 100%;
+    min-height: 64px;
+    flex-direction: column;
+    gap: 3px;
+}
+.action-grid button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+.action-grid small { font-size: 11px; }
+
+.attack-countdown { color: #f0d39a; margin: 0; }
+
+/* The slash sheet has five frames across a 767 x 325 transparent image. */
+.slash-effect {
+    background-image: url('../media/effect/slash-effect-art.png');
+}
+.explosion-effect { background-image: url('../media/effect/explosion-effect-art.png'); }
+.hitting-effect { background-image: url('../media/effect/hitting-effect-art.png'); }
+.blunt-effect { background-image: url('../media/effect/blunt-hitting-effect.png'); }
+.hit-effect {
+    position: absolute;
+    width: 128px;
+    height: 128px;
+    max-width: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    opacity: 0;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+}
+.hit-effect.is-playing {
+    opacity: 1;
+}
+.hit-effect.slash-effect {
+    background-size: 500% 100%;
+    width: 100px;
+    height: 212px;
+}
+.hit-effect.slash-effect.is-playing {
+    animation: slash-frames 0.5s steps(5) forwards;
+}
+@keyframes slash-frames {
+    from { background-position: 0% 0; }
+    to { background-position: 125% 0; }
+}
+.hit-effect.hitting-effect, .hit-effect.blunt-effect {
+    background-size: 400% 100%;
+}
+.hit-effect.hitting-effect.is-playing, .hit-effect.blunt-effect.is-playing {
+    animation: impact-frames 0.48s steps(4) forwards;
+}
+@keyframes impact-frames {
+    from { background-position: 0% 0; }
+    to { background-position: 133.333% 0; }
+}
+/* Use the first row of the explosion sheet, which contains five stages. */
+.hit-effect.explosion-effect {
+    background-size: 500% 200%;
+}
+.hit-effect.explosion-effect.is-playing {
+    animation: slash-frames 0.5s steps(5) forwards;
+}
+#turn-message { min-height: 1.5em; color: #f0d39a; }
+.hero-attacking img { animation: hero-strike 0.6s ease; }
+.monster-attacking img { animation: monster-strike 0.6s ease; }
+@keyframes hero-strike { 50% { transform: translateX(35px); } }
+@keyframes monster-strike { 50% { transform: translateX(-35px); } }
+@media (prefers-reduced-motion: reduce) {
+    .hero-attacking img, .monster-attacking img { animation: none; }
+}
+
 /* Stack class choices on smaller screens */
 @media (max-width: 520px) {
+    .battle-panel { padding: 18px; }
+    .battle-field { gap: 12px; }
+    .combatant-header { min-height: 4.5em; }
+    .combatant-figure { height: 140px; }
+    .preview-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .preview-actions .secondary-button:first-child,
+    .preview-actions .primary-button,
+    .preview-actions .secondary-button:last-child {
+        justify-self: center;
+    }
+
     .creation-panel {
         padding: 24px 18px;
     }
@@ -285,6 +496,13 @@ body {
     .class-icon {
         grid-column: 1;
         grid-row: 2 / span 2;
+    }
+
+    .class-portrait {
+        grid-column: 1;
+        grid-row: 2 / span 2;
+        width: 80px;
+        height: 100px;
     }
 
     .class-name,
